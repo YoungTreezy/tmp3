@@ -44,28 +44,5 @@ def hh_parser(url):
     return jobs
 
 
-# def work_city(url):
-#     resp = requests.get(url, headers=header[randint(0, 2)])
-#     jobs = []
-#     if url:
-#         if resp.status_code == 200:
-#             soup = Bs(resp.content, 'html.parser')
-#             main_Table = soup.find('div', attrs={'class': 'result-list'})
-#             if main_Table:
-#                 Table_list = main_Table.find_all('div', class_='snippet__inner')
-#                 for Table in Table_list:
-#                     title = Table.find('h2')
-#                     title_url = title.a['href']
-#                     description = Table.find('div', class_='snippet__desc').text
-#                     company = Table.find('li', class_='snippet__meta-item snippet__meta-item_company').text
-#                     jobs.append({
-#                         'title': title.text, 'url': title_url,
-#                         'description': description, 'company': company,
-#                     })
-#     return jobs
-
-
 # if __name__ == '__main__':
-#     # h.close()
-#     print(hh('https://hh.ru/search/vacancy?area=1&fromSearchLine=true&st=searchVacancy&text=Python&from=suggest_post'))
-#     print(work_city('https://moskva.gorodrabot.ru/python'))
+#     print(hh_parser('https://hh.ru/search/vacancy?area=1&fromSearchLine=true&st=searchVacancy&text=Python&from=suggest_post'))

@@ -1,7 +1,7 @@
 import sys
 from scraping import *
 
-from PyQt5 import QtSql, QtNetwork
+from PyQt5 import QtSql
 
 from uis.search_info import *
 from uis.table import Ui_Form
@@ -45,21 +45,24 @@ class Gui(QtWidgets.QWidget):
         url = self.ui.lineEdit.text()
         query = QtSql.QSqlQuery(self.db)
         parser_list = hh_parser(url)
-        # isOk = query.prepare("insert into scraping(title, url, description, company)"
-        #                      " values(:title, :url, :description, :company)")
+        # форма добавления данных в бд
+        isOk = query.prepare('insert into scraping(title, description, url, company)'
+                             'values(:title, :url, :description, :company)')
+        if not isOk:
+            print('соси ирод поганый')
+        # бинд данных
         for parser_dict in parser_list:
             for keys, values in parser_dict.items():
                 if keys == 'title':
                     query.bindValue(':title', values)
-                if keys == 'url':
+                elif keys == 'url':
                     query.bindValue(':url', values)
-                if keys == 'description':
+                elif keys == 'description':
                     query.bindValue(':description', values)
-                if keys == 'company':
+                else:
                     query.bindValue(':company', values)
-            query.exec_()
+            isOk = query.exec_()
             self.model.select()
-            # self.form.tableView.setModel(self.model)
 
 
 if __name__ == '__main__':
