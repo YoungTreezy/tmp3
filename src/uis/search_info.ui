@@ -39,11 +39,11 @@
      <string>Вставьте свой URL...</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="scraping">
+   <widget class="QPushButton" name="start_scraping">
     <property name="geometry">
      <rect>
-      <x>606</x>
-      <y>6</y>
+      <x>6</x>
+      <y>55</y>
       <width>188</width>
       <height>41</height>
      </rect>
@@ -55,14 +55,59 @@
    <widget class="QPushButton" name="open_table">
     <property name="geometry">
      <rect>
-      <x>606</x>
-      <y>53</y>
+      <x>610</x>
+      <y>6</y>
       <width>188</width>
       <height>41</height>
      </rect>
     </property>
     <property name="text">
      <string>Открыть таблицу</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>60</y>
+      <width>251</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Время скрапинга (в мин):</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="time_scraping">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>50</y>
+      <width>71</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="maximum">
+     <number>60</number>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="stop_scraping">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>587</x>
+      <y>55</y>
+      <width>211</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Закончить скрапинг</string>
     </property>
    </widget>
   </widget>

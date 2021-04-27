@@ -21,10 +21,9 @@ class Ui_Form(object):
         self.tableView = QtWidgets.QTableView(Form)
         self.tableView.setObjectName("tableView")
         self.horizontalLayout.addWidget(self.tableView)
-        self.plainTextEdit = QtWidgets.QPlainTextEdit(Form)
-        self.plainTextEdit.setReadOnly(True)
-        self.plainTextEdit.setObjectName("plainTextEdit")
-        self.horizontalLayout.addWidget(self.plainTextEdit)
+        self.textBrowser = QtWidgets.QTextBrowser(Form)
+        self.textBrowser.setObjectName("textBrowser")
+        self.horizontalLayout.addWidget(self.textBrowser)
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -32,4 +31,3 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
-        self.plainTextEdit.setPlaceholderText(_translate("Form", "Состояние таблицы..."))

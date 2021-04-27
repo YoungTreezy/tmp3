@@ -3,7 +3,6 @@ import codecs
 from bs4 import BeautifulSoup as Bs
 from random import randint
 
-# __all__ = ('hh', 'work_city')
 
 header = [
     {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0',
@@ -25,7 +24,7 @@ def hh_parser(url):
             soup = Bs(resp.content, 'html.parser')
             main_list = soup.find('div', attrs={'class': 'vacancy-serp'})
             if main_list:
-                list_list = main_list.find_all('div', class_='vacancy-serp-item')
+                list_list = main_list.find_all('div', class_='vacancy-serp-item', limit=10)
                 for list in list_list:
                     title = 'text'
                     t = list.find('div', class_='vacancy-serp-item__row vacancy-serp-item__row_header')

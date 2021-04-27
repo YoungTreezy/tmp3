@@ -24,14 +24,7 @@
     <widget class="QTableView" name="tableView"/>
    </item>
    <item>
-    <widget class="QPlainTextEdit" name="plainTextEdit">
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-     <property name="placeholderText">
-      <string>Состояние таблицы...</string>
-     </property>
-    </widget>
+    <widget class="QTextBrowser" name="textBrowser"/>
    </item>
   </layout>
  </widget>
