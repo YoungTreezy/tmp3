@@ -17,7 +17,7 @@ class Gui(QtWidgets.QWidget):
         # открываю бд
         self.db = QtSql.QSqlDatabase.addDatabase("QPSQL")
         self.db.setDatabaseName('postgres')
-        self.db.setUserName('vlad')
+        self.db.setUserName('postgres')
         self.db.setPassword('12345')
         self.db.setHostName('localhost')
         self.db.open()
@@ -39,17 +39,21 @@ class Gui(QtWidgets.QWidget):
     # обработка кнопки которая открывает таблицу
     def open_table(self):
         global table_form
+        # открывает новое окно
         table_form = QtWidgets.QDialog()
         self.form.setupUi(table_form)
         table_form.show()
+        # если бд не открылась, то выдает "ошибку"
         if not self.db.open():
             self.form.textBrowser.append("Таблица не была открыта.")
         else: self.form.textBrowser.append("Таблица открыта.")
+        # передает таблицу scraping в форму tableView
         self.model.setTable("scraping")
         self.model.select()
         self.form.tableView.setModel(self.model)
 
     def timer_tick(self):
+        # берется url из строки и вставляется в ф-цию
         url = self.ui.lineEdit.text()
         parser_list = hh_parser(url)
         # форма добавления данных в бд
@@ -75,19 +79,26 @@ class Gui(QtWidgets.QWidget):
             self.form.textBrowser.append('-----------------------------------------------------------------'
                                          '-----------------------------------------------------------------')
             self.form.textBrowser.append('')
+            # добавление данных
             isOk = query.exec_()
             self.model.select()
 
     # обработчик кнопки которая парсит сайт по заданной ссылке
     def start_parse(self):
+        # запускает таймер
         time_scraping = self.ui.time_scraping.text()
-        self.timer.start(int(time_scraping) * 60000)
+        self.timer.start(int(time_scraping) * 6000)
+        # делает видимой кнопку "остановить скрапинг"
         self.ui.stop_scraping.setVisible(True)
+        # делает невидимой некнопку "включить скрапинг"
         self.ui.start_scraping.setVisible(False)
 
     def stop_parse(self):
+        # выключает таймер
         self.timer.stop()
+        # делает невидимой кнопку "остановить скрапинг"
         self.ui.stop_scraping.setVisible(False)
+        # делает видимой некнопку "включить скрапинг"
         self.ui.start_scraping.setVisible(True)
 
 
